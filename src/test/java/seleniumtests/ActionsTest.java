@@ -22,10 +22,9 @@ import org.testng.annotations.Test;
 import com.google.common.io.Files;
 
 public class ActionsTest {
-
+	/* test case to test actions classes in selenium */
 	@Test
 	public static void actionTest() throws InterruptedException, IOException {
-		// TODO Auto-generated method stub
 		WebDriver driver = new ChromeDriver();// launching browser
 
 		driver.get("https://demoqa.com/buttons");// navigate url

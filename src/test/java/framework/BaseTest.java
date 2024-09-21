@@ -44,7 +44,11 @@ public class BaseTest {
 	public void beforeMethod() {
 		Reporter.log("executing before method block", true);
 		// launchBrowser("chrome");
-		originalDriver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+
+		originalDriver = new ChromeDriver(options);
+		// originalDriver = new ChromeDriver();
 
 		originalDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		originalDriver.get("https://qademoapp.sqaguru.co.in/");

@@ -30,10 +30,12 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+
+    - name: curl
+      run: curl -v https://qademoapp.sqaguru.co.in/ 
     - name: Build with Maven
       run: mvn clean -Dtest=ElementsFormSubmitTest test
     - name: check chrome version 1
       run: google-chrome --version
 
-    - name: check chrome version 2
-      run: google-chrome-stable --version
+    

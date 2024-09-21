@@ -1,4 +1,4 @@
-package seleniumtests;
+package framework;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -23,18 +23,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.events.WebDriverListener;
+import org.testng.Reporter;
 
 public class Listener implements WebDriverListener {
+
+	@Override
+	public void afterAccept(Alert alert) {
+		// TODO Auto-generated method stub
+		WebDriverListener.super.afterAccept(alert);
+	}
 
 	@Override
 	public void afterActiveElement(TargetLocator targetLocator, WebDriver driver) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterActiveElement(targetLocator, driver);
-	}
-
-	@Override
-	public void afterAccept(Alert alert) {
-		System.out.println("Passed: An alert has accepted");
 	}
 
 	@Override
@@ -117,7 +119,9 @@ public class Listener implements WebDriverListener {
 
 	@Override
 	public void afterClick(WebElement element) {
-		System.out.println("Passed: clicked on element ");
+		// TODO Auto-generated method stub
+		Reporter.log("Clicked on element " + element.getTagName() + " " + element.getText(), true);
+		WebDriverListener.super.afterClick(element);
 	}
 
 	@Override
@@ -170,12 +174,16 @@ public class Listener implements WebDriverListener {
 
 	@Override
 	public void afterFindElement(WebDriver driver, By locator, WebElement result) {
-		System.out.println("Passed: Element found for locator " + locator.toString());
+		// TODO Auto-generated method stub
+		WebDriverListener.super.afterFindElement(driver, locator, result);
+		Reporter.log("Done: " + locator + " element found successfully", true);// recommended logging mechanism in
+																				// automation testing
 	}
 
 	@Override
 	public void afterFindElement(WebElement element, By locator, WebElement result) {
-		System.out.println("Passed: Element found for locator " + locator.toString());
+		// TODO Auto-generated method stub
+		WebDriverListener.super.afterFindElement(element, locator, result);
 	}
 
 	@Override
@@ -402,7 +410,8 @@ public class Listener implements WebDriverListener {
 
 	@Override
 	public void afterSendKeys(WebElement element, CharSequence... keysToSend) {
-		System.out.println("Passed: Enter text on element");
+		Reporter.log(keysToSend + " entered successfully on element " + element.getTagName() + " " + element.getText());
+		WebDriverListener.super.afterSendKeys(element, keysToSend);
 	}
 
 	@Override
@@ -449,7 +458,8 @@ public class Listener implements WebDriverListener {
 
 	@Override
 	public void beforeAccept(Alert alert) {
-		System.out.println("In-Progress: About to accept an alert..");
+		// TODO Auto-generated method stub
+		WebDriverListener.super.beforeAccept(alert);
 	}
 
 	@Override
@@ -538,7 +548,9 @@ public class Listener implements WebDriverListener {
 
 	@Override
 	public void beforeClick(WebElement element) {
-		System.out.println("In-Progress: Clicking on element " + element.getText());
+		// TODO Auto-generated method stub
+		WebDriverListener.super.beforeClick(element);
+		Reporter.log("Clicking on element " + element.getTagName() + " " + element.getText(), true);
 	}
 
 	@Override
@@ -593,16 +605,19 @@ public class Listener implements WebDriverListener {
 	public void beforeFindElement(WebDriver driver, By locator) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeFindElement(driver, locator);
+		Reporter.log("Finding for element " + locator, true);
 	}
 
 	@Override
 	public void beforeFindElement(WebElement element, By locator) {
-		System.out.println("In-Progress: Findin element by locator " + locator.toString());
+		// TODO Auto-generated method stub
+		WebDriverListener.super.beforeFindElement(element, locator);
 	}
 
 	@Override
 	public void beforeFindElements(WebDriver driver, By locator) {
-		System.out.println("In-Progress: Findin element by locator " + locator.toString());
+		// TODO Auto-generated method stub
+		WebDriverListener.super.beforeFindElements(driver, locator);
 	}
 
 	@Override
@@ -645,6 +660,7 @@ public class Listener implements WebDriverListener {
 	public void beforeGet(WebDriver driver, String url) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeGet(driver, url);
+		Reporter.log("Navigating to url " + url, true);
 	}
 
 	@Override
@@ -723,6 +739,7 @@ public class Listener implements WebDriverListener {
 	public void beforeGetText(WebElement element) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeGetText(element);
+		Reporter.log("Fetching element text " + element.getTagName(), true);
 	}
 
 	@Override
@@ -823,7 +840,8 @@ public class Listener implements WebDriverListener {
 
 	@Override
 	public void beforeSendKeys(WebElement element, CharSequence... keysToSend) {
-		System.out.println("In-Progress: Entering text on element..");
+		// TODO Auto-generated method stub
+		WebDriverListener.super.beforeSendKeys(element, keysToSend);
 	}
 
 	@Override

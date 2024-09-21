@@ -1,4 +1,4 @@
-package seleniumtests;
+package testcases;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,13 +10,11 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class DemoQASubmitFormDPExcelTest extends BaseTest {
+public class DemoQASubmitFormDPExcelTest extends BasePage {
 
 	@Test(dataProvider = "testDataExcel")
 	// @Parameters({ "userName", "email", "currentAddress", "permanentAddress" })
@@ -66,8 +64,6 @@ public class DemoQASubmitFormDPExcelTest extends BaseTest {
 
 		driver.findElement(By.id("name")).isDisplayed();// validating the message has prompted
 
-		String actualUserName = driver.findElement(By.id("name")).getText();// return me the element text
-
 		// #################################### verify text passed
 		// ###########################################
 		System.out.println("test passed successfully");
@@ -109,33 +105,33 @@ public class DemoQASubmitFormDPExcelTest extends BaseTest {
 		FileInputStream fileInputStream = new FileInputStream(
 				"D:\\techaxisgroup\\batch202405\\selenium-automation-maven-2024may-ws\\selenium_automation_maven_may24\\src\\test\\resources\\testdata\\TestData.xls");
 
-		HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);// excel reader class - type .xls
+		try (HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream)) {
+			HSSFSheet sheetTestData = workbook.getSheet(sheetName);// reading a specific sheet of workbook
 
-		HSSFSheet sheetTestData = workbook.getSheet(sheetName);// reading a specific sheet of workbook
+			int totalRows = sheetTestData.getPhysicalNumberOfRows();
 
-		int totalRows = sheetTestData.getPhysicalNumberOfRows();
+			Object[] object = new Object[totalRows - 1];
 
-		Object[] object = new Object[totalRows - 1];
+			System.out.println("totalRows: " + totalRows);
 
-		System.out.println("totalRows: " + totalRows);
+			int totalColumns = sheetTestData.getRow(0).getPhysicalNumberOfCells();
 
-		int totalColumns = sheetTestData.getRow(0).getPhysicalNumberOfCells();
+			System.out.println("total columns: " + totalColumns);
 
-		System.out.println("total columns: " + totalColumns);
+			for (int rowCounter = 1; rowCounter < totalRows; rowCounter++) {
+				HashMap<String, String> testData = new HashMap<String, String>();
 
-		for (int rowCounter = 1; rowCounter < totalRows; rowCounter++) {
-			HashMap<String, String> testData = new HashMap<String, String>();
-
-			HSSFRow testDataHeaderRow = sheetTestData.getRow(0);
-			HSSFRow testDataRow = sheetTestData.getRow(rowCounter);
-			for (int columnCounter = 0; columnCounter < totalColumns; columnCounter++) {
-				String cellHeaderData = testDataHeaderRow.getCell(columnCounter).getStringCellValue();
-				String cellTestData = testDataRow.getCell(columnCounter).getStringCellValue();
-				testData.put(cellHeaderData, cellTestData);
-				System.out.println("cell header: " + cellHeaderData + "\ncell data: " + cellTestData);
+				HSSFRow testDataHeaderRow = sheetTestData.getRow(0);
+				HSSFRow testDataRow = sheetTestData.getRow(rowCounter);
+				for (int columnCounter = 0; columnCounter < totalColumns; columnCounter++) {
+					String cellHeaderData = testDataHeaderRow.getCell(columnCounter).getStringCellValue();
+					String cellTestData = testDataRow.getCell(columnCounter).getStringCellValue();
+					testData.put(cellHeaderData, cellTestData);
+					System.out.println("cell header: " + cellHeaderData + "\ncell data: " + cellTestData);
+				}
+				object[rowCounter - 1] = testData;
 			}
-			object[rowCounter - 1] = testData;
+			return object;
 		}
-		return object;
 	}
 }

@@ -1,14 +1,13 @@
-package seleniumtests;
+package testcases;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class DemoQASubmitFormTest extends BaseTest {
+public class DemoQASubmitFormTest extends BasePage {
 
 	@Test(groups = "SMOKE")
 	@Parameters({ "userName", "email", "currentAddress", "permanentAddress" })

@@ -1,4 +1,4 @@
-package seleniumtests;
+package testcases;
 
 import java.util.List;
 

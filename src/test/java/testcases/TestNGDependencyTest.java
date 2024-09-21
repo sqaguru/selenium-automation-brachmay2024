@@ -1,4 +1,4 @@
-package seleniumtests;
+package testcases;
 
 import org.testng.Reporter;
 import org.testng.annotations.Test;

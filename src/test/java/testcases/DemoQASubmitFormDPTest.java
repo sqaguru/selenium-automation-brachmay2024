@@ -1,17 +1,15 @@
-package seleniumtests;
+package testcases;
 
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class DemoQASubmitFormDPTest extends BaseTest {
+public class DemoQASubmitFormDPTest extends BasePage {
 
 	@Test(dataProvider = "testDataMaps2")
 	// @Parameters({ "userName", "email", "currentAddress", "permanentAddress" })
@@ -60,8 +58,6 @@ public class DemoQASubmitFormDPTest extends BaseTest {
 		// ############### verify user name text ###############
 
 		driver.findElement(By.id("name")).isDisplayed();// validating the message has prompted
-
-		String actualUserName = driver.findElement(By.id("name")).getText();// return me the element text
 
 		// #################################### verify text passed
 		// ###########################################

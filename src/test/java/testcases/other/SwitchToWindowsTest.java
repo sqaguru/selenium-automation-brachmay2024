@@ -1,4 +1,4 @@
-package testcases;
+package testcases.other;
 
 import java.util.Scanner;
 import java.util.Set;

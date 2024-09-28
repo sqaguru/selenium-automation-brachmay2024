@@ -1,4 +1,4 @@
-package testcases;
+package testcases.other;
 
 import java.io.IOException;
 import java.time.Duration;

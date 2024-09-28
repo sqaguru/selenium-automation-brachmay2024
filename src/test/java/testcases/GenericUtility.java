@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import com.google.common.io.Files;
 
 public class GenericUtility {
-	static void captureScreenshot(WebDriver driver, String fileName) throws IOException {
+	public static void captureScreenshot(WebDriver driver, String fileName) throws IOException {
 		File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
 		Files.copy(sourceFile, new File(

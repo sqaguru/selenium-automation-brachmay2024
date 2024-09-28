@@ -3,7 +3,7 @@
 <suite name="Suite1" parallel="classes" thread-count="5">
 	<test name="smoke suite">
 		<classes>
-			<class name="testcases.ElementsFormSubmitTest" />
+			<class name="testcases.ElementsTextboxFormSubmitTest" />
 		</classes>
 	</test>
 </suite>

@@ -1,4 +1,4 @@
-package testcases;
+package testcases.other;
 
 import java.time.Duration;
 import org.openqa.selenium.By;

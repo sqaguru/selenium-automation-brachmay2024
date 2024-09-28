@@ -1,4 +1,4 @@
-package testcases;
+package testcases.other;
 
 import org.testng.Reporter;
 import org.testng.annotations.Test;

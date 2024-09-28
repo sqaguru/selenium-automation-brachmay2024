@@ -4,10 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class ElementsPage {
+public class ElementsTextBoxFomPage {
 	WebDriver driver;
 
-	public ElementsPage(WebDriver driver) {
+	public ElementsTextBoxFomPage(WebDriver driver) {
 		this.driver = driver;
 	}
 

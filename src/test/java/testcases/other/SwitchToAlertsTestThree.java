@@ -1,10 +1,10 @@
-package testcases;
+package testcases.other;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SwitchToAlertsTestTwo {
+public class SwitchToAlertsTestThree {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub

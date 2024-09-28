@@ -1,4 +1,4 @@
-package testcases;
+package testcases.other;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

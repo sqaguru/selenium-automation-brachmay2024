@@ -58,7 +58,7 @@ public class BaseTest {
 		Reporter.log("before class execution", true);
 		// launchBrowser("chrome");
 		ChromeOptions options = new ChromeOptions();
-//		options.addArguments("--headless");
+		options.addArguments("--headless");
 		Listener listener = new Listener();
 		originalDriver = new ChromeDriver(options);
 //		driver = originalDriver;
